@@ -1,0 +1,19 @@
+# Maven
+target/
+
+# IDEs
+.idea/
+*.iml
+.eclipse/
+.settings/
+.classpath
+.project
+.env
+*.local.properties
+.DS_Store
+
+# Test Outputs (DO NOT PUSH THESE TO GIT)
+test-output/
+reports/
+logs/
+downloads/
