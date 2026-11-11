@@ -12,31 +12,31 @@ import pages.address.NewStatePage;
 import pages.address.StateListPage;
 
 public class StateLoadFlow {
-	
+
 	CountryListPage countryListPage;
 	private static final Logger log = LogManager.getLogger(StateLoadFlow.class);
-	
-	
+
+
 	public StateLoadFlow(){
 		this.countryListPage = new CountryListPage();
 	}
-	
+
 	public void run(Map<String, List<StateData>> countryStateMap) throws InterruptedException {
-    	        
+
         countryListPage.waitFroTable();
-        
-        
+
+
         // State control flags (Renamed for clarity)
-        boolean needsFrameSwitch = false; 
+        boolean needsFrameSwitch = false;
 
 
         // --- Loop through Countries ---
         for (Map.Entry<String, List<StateData>> entry : countryStateMap.entrySet()) {
             String countryCode = entry.getKey();
             log.info("Procession: {}",countryCode);
-                                  
+
             StateListPage stateListPage = countryListPage.openEditFor(countryCode,needsFrameSwitch);
-            
+
             Set<String> existingStates = stateListPage.getExistingStateName();
 
             boolean hasEnteredNewStateMode = false;
@@ -61,14 +61,14 @@ public class StateLoadFlow {
                     log.error("Could not add {}: {}", state.getDescription(), result.message());
                     newStatePage.cancel();
                 }
-                
-                hasEnteredNewStateMode = true; 
+
+                hasEnteredNewStateMode = true;
             }
             stateListPage.backToCountryList(hasEnteredNewStateMode);
-            needsFrameSwitch = true; 
+            needsFrameSwitch = true;
         }
-    
-		
+
+
 	}
 
 }

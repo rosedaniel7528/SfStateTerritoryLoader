@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="SF State Loader">
+<suite name="SF State Loader" data-provider-thread-count="3">
   <listeners>
     <listener class-name="listeners.TestListeners"/>
     <listener class-name="listeners.AnnotationTransformer"/>
