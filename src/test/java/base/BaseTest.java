@@ -22,7 +22,7 @@ public class BaseTest {
 	
 	private static final Logger log = LogManager.getLogger(BaseTest.class);
 	private static final Semaphore BROWSER_SLOTS = new Semaphore(
-	        Integer.parseInt(Objects.requireNonNullElse(ConfigReader.getProperty("parallelism"), "3")));
+	        Integer.parseInt(Objects.requireNonNullElse(ConfigReader.getProperty("parallelism"), "4")));
 	private static final ThreadLocal<Boolean> hasSlot = ThreadLocal.withInitial(() -> false);
 
     @BeforeMethod
